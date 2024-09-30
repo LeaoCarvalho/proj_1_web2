@@ -1,10 +1,13 @@
 package com.example.proj_1_web2.store;
 
+import com.example.proj_1_web2.productStore.ProductStore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Table(name = "stores")
 @Entity(name = "stores")
@@ -14,9 +17,16 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Store {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String name;
     private String address;
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "jk_store_id", referencedColumnName = "id")
+//    private List<ProductStore> productStore;
+
+    @OneToMany(mappedBy = "store")
+    private List<ProductStore> productStores;
 
     public Store(StoreRequestDTO data) {
         this.name = data.name();
