@@ -11,9 +11,10 @@ import java.util.List;
 @RequestMapping("product_store")
 public class ProductStoreController {
 
-    @Autowired
+//    @Autowired
 //    private ProductStoreRepository repository;
 
+    @Autowired
     private ProductStoreService service;
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")

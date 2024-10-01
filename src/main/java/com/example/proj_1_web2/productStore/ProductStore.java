@@ -1,5 +1,6 @@
 package com.example.proj_1_web2.productStore;
 
+import com.example.proj_1_web2.ItemOperation.ItemOperation;
 import com.example.proj_1_web2.product.Product;
 import com.example.proj_1_web2.product.ProductRepository;
 import com.example.proj_1_web2.store.Store;
@@ -33,11 +34,8 @@ public class ProductStore {
     @JoinColumn(name = "fk_store_id")
     private Product product;
 
-//    public ProductStore(ProductStoreRequestDTO data){
-//        this.cost_price = data.cost_price();
-//        this.sell_price = data.sell_price();
-//        this.stock_amount = data.stock_amount();
-//    }
+    @OneToMany(mappedBy = "productStore")
+    private List<ItemOperation> itemOperations;
 
     public ProductStore(ProductStoreRequestDTO data, Product product, Store store) {
         this.cost_price = data.cost_price();

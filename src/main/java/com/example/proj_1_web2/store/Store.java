@@ -21,10 +21,6 @@ public class Store {
     private String name;
     private String address;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "jk_store_id", referencedColumnName = "id")
-//    private List<ProductStore> productStore;
-
     @OneToMany(mappedBy = "store")
     private List<ProductStore> productStores;
 
